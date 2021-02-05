@@ -4,14 +4,15 @@ public class HomeworkEasy {
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
         int n = scanner.nextInt();
-        int i = 1;
-        int x = 0;
+        int x = 2;
+        int y = 1;
 
-        while (i <= n) {
-            x = x + i;
-            i++;
+        while (x <= n)
+        {
+            y = x * y;
+            x++;
+            System.out.println(y);
         }
-        System.out.println(x);
     }
-
 }
+//Вычислить факториал числа n

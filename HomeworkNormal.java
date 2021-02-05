@@ -1,13 +1,19 @@
-import java.util.Scanner;
+import java.util.Arrays;
 
 public class HomeworkNormal {
     public static void main(String[] args) {
-        Scanner scanner = new Scanner(System.in);
-        int x = scanner.nextInt();
+        int [] array = new int[25];
+        int numberOne = 1;
+        int numberTwo = 0;
+        int numberThree;
 
-        int number_one = x / 100;
-        int number_two = (x % 100) / 10;
-        int number_three = x % 10;
-        System.out.println((number_one + number_two + number_three));
+        for(int i = 0; i < array.length; i++)
+        {
+            numberThree = numberOne + numberTwo;
+            numberOne = numberTwo;
+            numberTwo = numberThree;
+            array[i] = numberTwo;
+        }
+        System.out.println(Arrays.toString(array));
     }
 }

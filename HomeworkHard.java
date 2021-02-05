@@ -1,21 +1,26 @@
 import java.util.Random;
+import java.util.Scanner;
 
 public class HomeworkHard {
     public static void main(String[] args) {
-        Random random = new Random();
-        int[] array = new int[100];
-        int min = Integer.MAX_VALUE;
-        for (int i = 0; i < 100; i++) {
-            array[i]=random.nextInt(1000);
+        Scanner scanner = new Scanner(System.in);
+        System.out.println("Введите строку:");
+        String string = scanner.nextLine();
+        char ch;
+        int count = 0;
+
+        for (int i = 0; i < string.length(); i++)
+        {
+            ch = string.charAt(i);
+            if(Character.isLowerCase(ch))
+            {
+                count++;
+            }
         }
-        for (int i = 0; i < 100; i++) {
-            if (array[i] < min) min = array[i];
+        if(count == string.length() && string.matches("[a-z]+"))
+        {
+            System.out.println("В строке все буквы латинские в нижнем регистре. Круто!");
         }
-        System.out.println(min);
-        while (min % 3 == 0 && min >= 3){
-            min /= 3;
-        }
-        if (min == 1) System.out.println("YES");
-        else System.out.println("NO");
+        else System.out.println("Не все/ни одна из букв в строке содержат латинские буквы в нижнем регистре");
     }
 }
