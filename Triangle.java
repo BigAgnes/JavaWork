@@ -6,18 +6,14 @@ public class Triangle extends Figure{
     private int ac;
 
     @Override
-    public void getSize(int ab, int bc) {
-        this.ab = ab;
-        this.bc = bc;
+    public int getSize() {
         int p = (ab + bc + ac) / 2;
         int S = (int) Math.sqrt(p*(p-ab)*(p-bc)*(p-ac));
-        System.out.println("Площадь треугольника = " + S);
+        return S;
     }
 
-    public void perimeter(int ab, int bc) {
-        this.ab = ab;
-        this.bc = bc;
-        System.out.println("Периметр треугольника = " + (ab + bc + ac));
+    public int perimeter() {
+        return (ab + bc + ac);
     }
 
     public int getAb() {

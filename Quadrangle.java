@@ -5,16 +5,12 @@ public class Quadrangle extends Figure{
     private int height;
 
     @Override
-    public void getSize(int weight, int height) {
-        this.weight = weight;
-        this.height = height;
-        System.out.println("Площадь четырехугольника = " + (weight * height));
+    public int getSize() {
+        return weight * height;
     }
 
-    public void perimeter(int weight, int height) {
-        this.weight = weight;
-        this.height = height;
-        System.out.println("Периметр четырехугольника = " + 2 * (weight + height));
+    public int perimeter(int weight, int height) {
+        return (2 * (weight + height));
     }
 
     public int getHeight() {

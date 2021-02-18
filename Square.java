@@ -5,14 +5,12 @@ public class Square extends Rectangle implements Sizeable{
     private int sizeSide;
 
     @Override
-    public void getSize(int side, int sizeSide) {
-        this.side = side;
-        System.out.println("Площадь квадрата" + Math.pow(side, 2));
+    public int getSize() {
+        return (int) (Math.pow(side, 2));
     }
 
-    public void perimeter(int side) {
-        this.side = side;
-        System.out.println("Периметр квадрата = " + (side * sizeSide));
+    public int perimeter() {
+        return  (side * sizeSide);
     }
 
     public int getSide() {

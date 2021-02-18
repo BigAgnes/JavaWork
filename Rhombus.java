@@ -5,14 +5,12 @@ public class Rhombus extends Quadrangle implements Sizeable {
     private int sizeSide;
 
     @Override
-    public void getSize(int side, int sizeSide) {
-        this.side = side;
-        System.out.println("Площадь ромба" + Math.pow(side, 2));
+    public int getSize() {
+        return (int) Math.pow(side, 2);
     }
 
-    public void perimeter(int side) {
-        this.side = side;
-        System.out.println("Периметр ромба = " + (side * sizeSide));
+    public int perimeter() {
+        return (side * sizeSide);
     }
 
     public int getSide() {

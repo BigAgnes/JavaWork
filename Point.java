@@ -5,10 +5,15 @@ public class Point extends Figure{
     private int coordinatesY;
 
     @Override
-    public void getSize(int coordinatesX, int coordinatesY) {
-        this.coordinatesX = coordinatesX;
-        this.coordinatesY = coordinatesY;
-        System.out.println("Координаты точки " + "(" + coordinatesX + "," + coordinatesY + ")");
+    public int getSize() {
+        return coordinatesX;
+    }
+
+    public String getSizeCoordinates(){
+        int x = getCoordinatesX();
+        int y = getCoordinatesY();
+        String coord = "(" + x + "," + y + ")";
+        return coord;
     }
 
     public int getCoordinatesX() {

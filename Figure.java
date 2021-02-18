@@ -5,7 +5,7 @@ abstract public class Figure {
     private int height;
 
 
-    public abstract void getSize(int weight, int height);
+    public abstract int getSize();
 
     @Override
     public boolean equals(Object o) {

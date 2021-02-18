@@ -5,16 +5,12 @@ public class Rectangle extends Quadrangle{
     private int height;
 
     @Override
-    public void getSize(int weight, int height) {
-        this.weight = weight;
-        this.height = height;
-        System.out.println("Площадь прямоугольника = " + (weight * height));
+    public int getSize() {
+        return (weight * height);
     }
 
-    public void perimeter(int weight, int height) {
-        this.weight = weight;
-        this.height = height;
-        System.out.println("Периметр прямоугольника = " + 2 * (weight + height));
+    public int perimeter() {
+        return (2 * (weight + height));
     }
 
     @Override
