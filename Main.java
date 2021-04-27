@@ -1,36 +1,41 @@
+import java.sql.*;
+
 public class Main {
-
     public static void main(String[] args) {
-        Person person = new Person();
-        Person personSecond = new Person("Пупыркин Василий Геннадьевич", 34);
+        Connection connection = null;
+        try {
+            connection = DriverManager.getConnection("jdbc:sqlite:./src/main/resources/test.db");
+            Statement statement = connection.createStatement();
+            statement.executeUpdate("drop table if exists EMPLOYEES");
+            statement.executeUpdate("create table EMPLOYEES(EMPLOYEE_ID integer primary key autoincrement," +
+                    "FIRST_NAME string not null," +
+                    "LAST_NAME string not null," +
+                    "DEPARTMENT string not null," +
+                    "SALARY integer not null);");
+            statement.executeUpdate("insert into EMPLOYEES values(null, 'John', 'Smith', 'Development', 5000);");
+            statement.executeUpdate("insert into EMPLOYEES values(null, 'Nick', 'Johnson', 'Development', 6000);");
+            statement.executeUpdate("insert into EMPLOYEES values(null, 'Mary', 'Johnson', 'Sales', 4000);");
+            statement.executeUpdate("insert into EMPLOYEES values(null, 'Cristopher', 'Robin', 'Sales', 4000);");
+            statement.executeUpdate("insert into EMPLOYEES values(null, 'Harry', 'Gates', 'Management', 8000);");
 
-        person.move();
-        person.talk();
+            ResultSet rs = statement.executeQuery("SELECT DEPARTMENT, SUM(SALARY) AS SALARY FROM EMPLOYEES GROUP BY DEPARTMENT;");
+            while (rs.next()){
+                System.out.println();
+                System.out.println(rs.getString("DEPARTMENT") + ": " + rs.getInt("SALARY"));
+            }
 
-        personSecond.move();
-        personSecond.talk();
-
-        Phone phone = new Phone();
-        Phone phoneSecond = new Phone("+7-981-123-56-78", "Nokia");
-        Phone phoneThird = new Phone("+7-981-678-65-88", "One Plus", 1280);
-
-        System.out.println(phone.number + " " + phone.model + " " + phone.weight);
-        System.out.println(phoneSecond.number + " " + phoneSecond.model + " " + phoneSecond.weight);
-        System.out.println(phoneThird.number + " " + phoneThird.model + " " + phoneThird.weight);
-
-        phone.receiveCall("Олег");
-        phone.getNumber();
-
-        phoneSecond.receiveCall("Катюха");
-        phoneSecond.getNumber();
-
-
-        phoneThird.receiveCall("Иван");
-        phoneThird.getNumber();
-
-        double[][] arraySecond = new double[][] {{1.2, 1.5}, {2.5, 6.8}};
-        Matrix matrix = new Matrix(arraySecond);
-
-        matrix.additionOfArrays(matrix);
+        } catch (SQLException ex) {
+            System.err.println(ex.getMessage());
+        }
+        finally {
+            try {
+                if(connection != null){
+                    connection.close();
+                }
+            }
+            catch (SQLException ex){
+                System.err.println(ex.getMessage());
+            }
+        }
     }
 }
